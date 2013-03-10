@@ -1,0 +1,19 @@
+{
+  "name": "dom-lite",
+  "version": "0.0.1",
+  "description": "not fancy dom helper utils",
+  "keywords": ["dom","helper","utils"],
+  "author": "stagas",
+  "license": "MIT",
+  "dependencies": {
+    "component/css": "*",
+    "component/classes": "*"
+  },
+  "development": {
+    "stagas/watch-js": "*",
+    "component/assert": "*",
+    "component/jquery": "*",
+    "component/dom": "*"
+  },
+  "scripts": ["index.js"]
+}
