@@ -17,6 +17,12 @@ Create an Element of `tag`
 by passing a tag name, or
 with an `html` string.
 
+Examples:
+
+```js
+var button = dom.create('button')
+var div = dom.create('<div>Hello</div>')
+```
 
 ### dom.get(`id`:`String`)
 > _returns_ Element
@@ -107,8 +113,15 @@ Gets the bounding rectangle for `el`.
 > _returns_ classList:Set
 
 Returns a cross-browser `classList`
-for `target`.
+for `el`.
 
+Example:
+
+```js
+var classes = dom.classes(el)
+classes.add('some-class')
+classes.remove('another')
+```
 
 ### dom.html(`el`:`Element`, `[html]`:`String`)
 > _returns_ html|el:String|Element
@@ -119,6 +132,13 @@ When passed an `html` it returns
 the Element instead of the html
 contents.
 
+Examples:
+
+```js
+var el = dom.create('div')
+dom.html(el, '<span>Hello</span>')
+dom.html(el) === '<div><span>Hello</span></div>' // true
+```
 
 ### dom.hide(`el`:`Element`)
 > _returns_ el:Element

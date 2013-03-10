@@ -36,6 +36,13 @@ module.exports = dom
  * by passing a tag name, or
  * with an `html` string.
  *
+ * Examples:
+ *
+ * ```js
+ * var button = dom.create('button')
+ * var div = dom.create('<div>Hello</div>')
+ * ```
+ *
  * @param {String} tag|html
  * @return {Element}
  * @api public
@@ -258,6 +265,14 @@ dom.box = dom.rect // alias
  * Returns a cross-browser `classList`
  * for `el`.
  *
+ * Example:
+ *
+ * ```js
+ * var classes = dom.classes(el)
+ * classes.add('some-class')
+ * classes.remove('another')
+ * ```
+ *
  * @param {Element} target
  * @return {Set} classList
  * @api public
@@ -274,6 +289,14 @@ dom.classes = function (el) {
  * When passed an `html` it returns
  * the Element instead of the html
  * contents.
+ *
+ * Examples:
+ *
+ * ```js
+ * var el = dom.create('div')
+ * dom.html(el, '<span>Hello</span>')
+ * dom.html(el) === '<div><span>Hello</span></div>' // true
+ * ```
  *
  * @param {Element} el
  * @param {String} [html]
