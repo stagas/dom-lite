@@ -198,16 +198,16 @@ describe("dom", function () {
     describe("when called with a property and a value", function () {
       it("should change only that css value of that element", function () {
         var el = dom.create('div')
-        dom.css(el, 'text-shadow', '1px 1px solid #ccc')
-        assert('1px 1px solid #ccc' === el.style['text-shadow'])
+        dom.css(el, 'padding', '10px')
+        assert('10px' === el.style.padding)
       })
     })
 
     describe("when called with a property", function () {
       it("should return the css value for that property", function () {
         var el = dom.create('div')
-        dom.css(el, 'text-shadow', '1px 1px solid #ccc')
-        assert('1px 1px solid #ccc' === dom.css(el, 'text-shadow'))
+        dom.css(el, 'padding', '10px')
+        assert('10px' === dom.css(el, 'padding'))
       })
     })
   })
@@ -216,6 +216,7 @@ describe("dom", function () {
     it("should return a style object of an element", function () {
       var el = dom.create('div')
       dom.css(el, { padding: 10, margin: 10 })
+      dom.append(el)
       var styles = dom.style(el)
       assert('object' === typeof styles)
       assert('10px' == styles.paddingLeft)
