@@ -170,6 +170,7 @@ dom.insertBefore = function (target, el) {
  */
 
 dom.remove = function (el) {
+  el = raw(el)
   el.parentNode.removeChild(el)
   return el
 }
@@ -255,16 +256,16 @@ dom.box = dom.rect // alias
 
 /**
  * Returns a cross-browser `classList`
- * for `target`.
+ * for `el`.
  *
  * @param {Element} target
  * @return {Set} classList
  * @api public
  */
 
-dom.classes = function (target) {
-  target = raw(target)
-  return classes(target)
+dom.classes = function (el) {
+  el = raw(el)
+  return classes(el)
 }
 
 /**
