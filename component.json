@@ -6,8 +6,10 @@
   "author": "stagas",
   "license": "MIT",
   "dependencies": {
+    "stagas/binder": "*",
     "component/css": "*",
-    "component/classes": "*"
+    "component/classes": "*",
+    "adamsanderson/trigger-event": "*"
   },
   "development": {
     "stagas/watch-js": "*",

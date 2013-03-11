@@ -18,6 +18,8 @@ var raw
 
 var css = require('css')
 var classes = require('classes')
+var binder = require('binder')
+var trigger = require('trigger-event')
 
 /**
  * Dom.
@@ -343,6 +345,93 @@ dom.hide = function (el) {
 
 dom.show = function (el) {
   return dom.css(el, 'display', 'block')
+}
+
+/**
+ * Bind to `event` for `el` and invoke `fn(e)`.
+ * When a `selector` is given then events are delegated.
+ *
+ * @param {Element} el
+ * @param {String} event
+ * @param {String} [selector]
+ * @param {Function} fn
+ * @param {Boolean} [capture]
+ * @return {Element} el
+ * @api public
+ */
+
+dom.on = function (el, event, selector, fn, capture) {
+  el = raw(el)
+  return binder.on(el, event, selector, fn, capture)
+}
+dom.bind = dom.on // alias
+
+/**
+ * Unbind to `event` for `el` and invoke `fn(e)`.
+ * When a `selector` is given then delegated event
+ * handlers are unbound.
+ *
+ * @param {Element} el
+ * @param {String} event
+ * @param {String} [selector]
+ * @param {Function} fn
+ * @param {Boolean} [capture]
+ * @return {Element} el
+ * @api public
+ */
+
+dom.off = function (el, event, selector, fn, capture) {
+  el = raw(el)
+  return binder.off(el, event, selector, fn, capture)
+}
+dom.unbind = dom.off // alias
+
+/**
+ * Same as `.on` but will call `.off`
+ * immediately after the first event.
+ *
+ * @param {Element} el
+ * @param {String} event
+ * @param {String} [selector]
+ * @param {Function} fn
+ * @param {Boolean} [capture]
+ * @return {Element} el
+ * @api public
+ */
+
+dom.once = function (el, event, selector, fn, capture) {
+  el = raw(el)
+  return binder.once(el, event, selector, fn, capture)
+}
+
+/**
+ * Trigger a DOM event.
+ *
+ * Examples:
+ *
+ * ```js
+ * var button = dom.create('button')
+ * dom.trigger(button, 'click')
+ * dom.trigger(document.body, 'mousemove', { clientX: 10, clientY: 35 });
+ * ```
+ *
+ * Where sensible, sane defaults will be filled in. See the list of event
+ * types for supported events.
+ *
+ * Loosely based on:
+ * https://github.com/kangax/protolicious/blob/master/event.simulate.js
+ *
+ * @param {Element} el
+ * @param {String} name
+ * @param {Object} [options]
+ * @return {Element} el
+ * @api public
+ */
+
+dom.trigger = function (el, name, options) {
+  el = raw(el)
+  trigger(el, name, options)
+  return el
 }
 
 /**
