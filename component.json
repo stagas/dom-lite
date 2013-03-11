@@ -1,6 +1,6 @@
 {
   "name": "dom-lite",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "not fancy dom helper utils",
   "keywords": ["dom","helper","utils"],
   "author": "stagas",
