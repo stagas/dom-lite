@@ -5,7 +5,12 @@ build: components index.js
 components: component.json
 	@component-install --dev
 
+dist: build
+	@component-build -s dom -n dom-lite -o dist/ \
+		&& cd utils \
+		&& python builder.py
+
 clean:
-	rm -rf components build
+	rm -rf components build dist
 
 .PHONY: clean

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>dom</title>
+    <link rel="stylesheet" href="../build/build.css">
+  </head>
+  <body>
+    <script src="../dist/dom-lite.min.js"></script>
+    <script>
+      var $ = dom
+      var div = $.create('div')
+      $.append(div)
+      $.html(div, 'hello there')
+      $.css(div, 'color', 'red')
+    </script>
+  </body>
+</html>
