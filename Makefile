@@ -10,7 +10,10 @@ dist: build
 		&& cd utils \
 		&& python builder.py
 
+docs: index.js
+	@qdox -m md > api.md
+
 clean:
-	rm -rf components build dist
+	rm -rf components build dist api.md
 
 .PHONY: clean
