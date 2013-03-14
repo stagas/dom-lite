@@ -405,3 +405,23 @@ describe(".trigger()", function () {
     dom.trigger(el, 'click')
   })
 })
+
+describe(".closest()", function () {
+  it("should find closest element with selector", function () {
+    var el = dom.create('div')
+    var a = dom.create('a')
+    var aa = dom.create('a')
+    dom.classes(aa).add('foo')
+    var b = dom.create('b')
+    var bb = dom.create('b.bar')
+    dom.append(a, aa)
+    dom.append(b, bb)
+    dom.append(el, a)
+    dom.append(el, b)
+    assert(aa===dom.closest(bb, '.foo'))
+    assert(null===dom.closest(bb, '.food'))
+    assert(null===dom.closest(bb, 'body'))
+    dom.append(el)
+    assert(document.body===dom.closest(bb, 'body'))
+  })
+})
