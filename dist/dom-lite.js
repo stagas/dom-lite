@@ -1219,6 +1219,26 @@ dom.trigger = function (el, name, options) {
 }
 
 /**
+ * Find closest element from `el`
+ * that matches selector `sel`.
+ *
+ * @param {Element} el
+ * @param {String} sel
+ * @return {Element} found
+ * @api public
+ */
+
+dom.closest = function (el, sel) {
+  el = raw(el)
+  var found
+  do {
+    found = el.querySelector(sel)
+  }
+  while (!found && el.parentNode !== el && (el = el.parentNode))
+  return found
+}
+
+/**
  * Returns a raw Element from any type of `el`,
  * jQuery, custom container, raw Element.
  *
